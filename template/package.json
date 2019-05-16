@@ -1,0 +1,37 @@
+{
+  "name": "{{name}}",
+  "version": "{{version}}",
+  "description": "{{description}}",
+  "author": {
+    "name": "{{ authorFullNameFrom author }}",
+    "email": "{{ authorEmailFrom author }}"
+  },
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.4.1",
+    "@nuxtjs/pwa": "^2.6.0",
+    "cross-env": "^5.2.0",
+    "js-cookie": "^2.2.0",
+    "lodash": "^4.17.11",
+    "nuxt": "^2.7.1",
+    "vee-validate": "^2.2.7",
+    "vue": "^2.6.10",
+    "vuetify": "^1.5.14",
+    "vuetify-components": "^1.0.3",
+    "vuetify-loader": "^1.2.2"
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^4.2.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "nodemon": "^1.19.0",
+    "prettier": "^1.17.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2"
+  }
+}
