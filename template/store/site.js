@@ -26,7 +26,16 @@
 export const state = () => ({
   name: process.env.SITE_NAME,
   copyright: '2018 - ' + new Date().getFullYear() + ' ' + process.env.COMPANY_NAME,
-  nav: [],
+  navs: [
+    // {
+    //   text: '菜单 1',
+    //   icon: 'people_outline',
+    //   items: [
+    //     {text: '链接1', to: '/home'},
+    //     {text: '链接2', to: '/me/profile'}
+    //   ]
+    // }
+  ],
   menus: [
     {icon: 'contacts', title: '个人信息', to: '/me/profile'},
     {icon: 'settings', title: '修改密码', to: '/me/password'},
@@ -38,5 +47,5 @@ export const getters = {
   name: state => state.name,
   copyright: state => state.copyright,
   menus: state => state.menus,
-  nav: state => state.nav
+  navs: state => state.navs
 }

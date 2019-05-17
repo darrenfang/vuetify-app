@@ -30,25 +30,47 @@
       v-model="drawer"
       fixed
       app>
+
       <v-list>
-        <v-list-tile
-          router
-          :to="item.to"
-          :key="i"
-          v-for="(item, i) in nav"
-          exact>
+        <v-list-tile to="/home" active-class="success--text" exact>
           <v-list-tile-action>
-            <v-icon v-html="item.icon"/>
+            <v-icon>home</v-icon>
           </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title v-text="item.title"/>
-          </v-list-tile-content>
+          <v-list-tile-title>首页</v-list-tile-title>
         </v-list-tile>
+
+        <v-list-group
+          v-for="(nav, i) in navs"
+          :prepend-icon="nav.icon"
+          no-action
+          :key="i"
+          active-class="success--text"
+        >
+          <template v-slot:activator>
+            <v-list-tile active-class="success--text" exact>
+              <v-list-tile-content>
+                <v-list-tile-title v-text="nav.text">}</v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+          </template>
+
+          <v-list-tile
+            v-for="(item, i) in nav.items"
+            :key="i"
+            :to="item.to"
+            active-class="success--text"
+            exact
+          >
+            <v-list-tile-content>
+              <v-list-tile-title v-text="item.text"></v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list-group>
       </v-list>
     </v-navigation-drawer>
     <v-toolbar fixed app :clipped-left="clipped">
       <v-toolbar-side-icon @click="drawer = !drawer"/>
-      <v-toolbar-title v-text="name"/>
+      <v-toolbar-title v-text="name" @click="$router.push('/home')" style="cursor: pointer;"/>
       <v-spacer/>
       <div class="mr-3" v-if="account && account.username">
         欢迎您，<span v-text="account.username"></span>
@@ -68,9 +90,11 @@
             :to="item.to"
             :key="i"
             v-for="(item, i) in menus"
-            exact>
+            exact
+            active-class="success--text"
+          >
             <v-list-tile-action>
-              <v-icon v-html="item.icon"/>
+              <v-icon v-text="item.icon"/>
             </v-list-tile-action>
             <v-list-tile-content>
               <v-list-tile-title v-text="item.title"/>
@@ -126,7 +150,7 @@
         name: 'site/name',
         copyright: 'site/copyright',
         menus: 'site/menus',
-        nav: 'site/nav',
+        navs: 'site/navs',
         account: 'me/account',
         message: 'message',
         confirm: 'confirm'
